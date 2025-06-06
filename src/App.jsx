@@ -1,19 +1,24 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useState } from 'react';
+import HomeScreen from './pages/HomeScreen';
+import PreferencesForm from './components/PreferencesForm';
 
-//importing the splash screen
-import HomeScreen from "./pages/HomeScreen";
-
-function App() {
+const App = () => {
+  const [showForm, setShowForm] = useState(false);
+  const [formData, setFormData] = useState({
+    interests: [],
+    contactMethod: '',
+    newsletter: false,
+  });
 
   return (
-    <Router>
-      <Routes>
-        {/* Splash screen */}
-        <Route path="/" element={<HomeScreen />} />
-      </Routes>
-    </Router>
+    <div className="min-h-screen bg-gray-50 p-6">
+      {!showForm ? (
+        <HomeScreen onStart={() => setShowForm(true)} />
+      ) : (
+        <PreferencesForm data={formData} updateData={(newData) => setFormData({ ...formData, ...newData })} />
+      )}
+    </div>
   );
-}
+};
 
 export default App;

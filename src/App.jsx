@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 //importing the splash screen
-import SplashScreen from "./components/splashscreen/SplashScreen";
+import HomeScreen from "./pages/HomeScreen";
 
 function App() {
 
@@ -10,7 +10,7 @@ function App() {
     <Router>
       <Routes>
         {/* Splash screen */}
-        <Route path="/" element={<SplashScreen />} />
+        <Route path="/" element={<HomeScreen />} />
       </Routes>
     </Router>
   );
